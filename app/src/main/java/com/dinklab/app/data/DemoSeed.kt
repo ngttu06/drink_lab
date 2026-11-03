@@ -11,19 +11,19 @@ object DemoSeed {
             result += item
             return item
         }
-        add("admin", Kind.STAFF, "Minh Anh · Admin", "Hoạt động", "code" to "NS001", "role" to "ADMIN", "email" to "admin@dinklab.example")
+        add("admin", Kind.STAFF, "Minh Anh · Admin", "Hoạt động", "code" to "NS001", "role" to "ADMIN", "email" to "admin@dinkapp.example")
         (1..3).forEach { add("sale$it", Kind.STAFF, listOf("", "Linh Nguyễn", "Tuấn Trần", "Hà Phạm")[it], "Hoạt động", "code" to "SALE00$it", "role" to "SALE") }
         (1..5).forEach {
             add("staff-coach$it", Kind.STAFF, listOf("", "Hoàng Nam", "Thu Trang", "Đức Huy", "Quỳnh Anh", "Minh Quân")[it], "Hoạt động", "code" to "HLV00$it", "role" to "COACH")
         }
         add("marketing", Kind.STAFF, "Bảo Ngọc · Marketing", "Hoạt động", "code" to "MKT001", "role" to "MARKETING")
-        add("owner", Kind.STAFF, "DinkLab · Chủ doanh nghiệp", "Hoạt động", "code" to "CEO001", "role" to "OWNER")
+        add("owner", Kind.STAFF, "DinkApp · Chủ doanh nghiệp", "Hoạt động", "code" to "CEO001", "role" to "OWNER")
         add("admin2", Kind.STAFF, "Quang · Vận hành", "Hoạt động", "code" to "NS002", "role" to "ADMIN")
         if (empty) return result
         (1..5).forEach { add("coach$it", Kind.COACH, "Coach ${listOf("", "Hoàng Nam", "Thu Trang", "Đức Huy", "Quỳnh Anh", "Minh Quân")[it]}", "Hoạt động", "staffId" to "staff-coach$it", "specialty" to "Pickleball cơ bản & chiến thuật", "payType" to "Theo buổi", "rate" to "350000") }
         listOf("Facebook", "TikTok", "Giới thiệu", "Sự kiện", "Website", "Khách tự liên hệ").forEachIndexed { index, name -> add("source${index + 1}", Kind.SOURCE, name) }
         (1..5).forEach { add("campaign$it", Kind.CAMPAIGN, "Pickleball mùa mới · đợt $it", "Đang chạy", "sourceId" to "source${(it - 1) % 6 + 1}", "ownerId" to "marketing", "startDate" to today.minusDays(30).toString(), "endDate" to today.plusDays(30).toString(), "budget" to "5000000") }
-        val venues = listOf("DinkLab Thảo Điền", "Riverside Bình Thạnh", "Pickle Arena Quận 7", "The Court Tân Bình")
+        val venues = listOf("DinkApp Thảo Điền", "Riverside Bình Thạnh", "Pickle Arena Quận 7", "The Court Tân Bình")
         venues.forEachIndexed { i, name -> add("venue${i + 1}", Kind.VENUE, name, "Hoạt động", "address" to "${20 + i * 12} Đường thể thao, TP. Hồ Chí Minh (demo)", "contact" to "Quản lý sân ${i + 1}", "opening" to "06:00–22:00", "availableHours" to "16") }
         (1..10).forEach { i ->
             add("court$i", Kind.COURT, "Sân ${i.toString().padStart(2, '0')} · ${venues[(i - 1) % 4]}", "Hoạt động", "code" to "SAN${i.toString().padStart(2, '0')}", "venueId" to "venue${(i - 1) % 4 + 1}", "type" to "Có mái che", "price" to "200000")

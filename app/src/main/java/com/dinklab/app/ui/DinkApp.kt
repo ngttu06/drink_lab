@@ -59,7 +59,7 @@ fun DinkApp(vm: AppViewModel) {
                 if (page.type != "form") TopAppBar(
                     title = { Column {
                         Text(when (page.type) {
-                            "home" -> "DinkLab"
+                            "home" -> "DinkApp"
                             "calendar" -> "Lịch hoạt động"
                             "more" -> "Không gian làm việc"
                             "reports" -> "Báo cáo & thống kê"
@@ -67,7 +67,7 @@ fun DinkApp(vm: AppViewModel) {
                             "settings" -> "Cài đặt demo"
                             "reminders" -> "Nhắc việc"
                             "detail" -> page.kind?.title ?: "Chi tiết"
-                            else -> page.kind?.title ?: "DinkLab"
+                            else -> page.kind?.title ?: "DinkApp"
                         }, fontWeight = FontWeight.Bold)
                         if (root) Text("DEMO · Dữ liệu cục bộ", style = MaterialTheme.typography.labelSmall, color = Muted)
                     } },
@@ -117,7 +117,7 @@ private fun LoginScreen(all: List<Item>, login: (String) -> Unit) {
     LazyColumn(Modifier.fillMaxSize().background(Canvas), contentPadding = PaddingValues(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
             Spacer(Modifier.height(40.dp))
-            Text("DINK / LAB", style = MaterialTheme.typography.headlineLarge, color = Forest, fontWeight = FontWeight.Black)
+            Text("DinkApp", style = MaterialTheme.typography.headlineLarge, color = Forest, fontWeight = FontWeight.Black)
             Spacer(Modifier.height(16.dp))
             Text("Vận hành gọn gàng.\nTập trung vào sân đấu.", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
             Text("Chọn tài khoản để khám phá ứng dụng", color = Muted, modifier = Modifier.padding(vertical = 16.dp))

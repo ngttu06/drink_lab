@@ -1,6 +1,8 @@
-# DinkLab Android · Mock operations app
+# DinkApp Android · Mock operations app
 
-Tên repository và project Gradle: `dinklab`. Tên hiển thị ứng dụng: **DinkLab**.
+Tên project và ứng dụng: **DinkApp**. Repository GitHub giữ nguyên `ngttu06/dinklab`.
+
+Nhãn launcher, màn hình đăng nhập, tiêu đề, theme/icon và thương hiệu dữ liệu mẫu dùng tên DinkApp. Application ID/package `com.dinklab.app` và file database `dinklab-demo.db` được giữ để tương thích bản cũ. Khi nâng cấp, app đổi tên thương hiệu mẫu mặc định mà không reset dữ liệu hoặc ghi đè tên đơn vị tùy chỉnh.
 
 Ứng dụng Android Kotlin/Jetpack Compose quản lý lớp pickleball với dữ liệu demo lưu bằng Room. Không có backend, không gọi ngân hàng, không xử lý thanh toán thật.
 
@@ -31,7 +33,7 @@ Không có mật khẩu thật. Chọn nhân sự trên màn hình đăng nhập
 - **Linh / Tuấn / Hà:** Sale, khách được giao và công việc cá nhân.
 - **Bảo Ngọc:** Marketing, nguồn khách và chiến dịch.
 - **Hoàng Nam / Thu Trang / Đức Huy / Quỳnh Anh / Minh Quân:** Coach.
-- **DinkLab:** chủ doanh nghiệp, xem tổng hợp.
+- **DinkApp:** chủ doanh nghiệp, xem tổng hợp.
 
 Chuyển tài khoản trong Cài đặt → Đăng xuất. Quyền được kiểm tra tại repository nhưng không phải bảo mật production: dữ liệu vẫn nằm trên một thiết bị demo.
 
@@ -90,7 +92,7 @@ Bộ đầy đủ gồm 60 khách, 12 lớp, 48 đăng ký, 100 buổi gốc và
 - Phân bổ nhiều khoản dùng text ID, chưa có allocation picker nhiều dòng.
 - Chưa có upload ảnh/chứng từ, export PDF/Excel, push, SMS, Zalo, OTP, cloud backup.
 - Nhắc việc được tạo khi mở màn hình, có đọc/ẩn và bật/tắt chung; chưa có công tắc riêng từng nhóm.
-- Tên đơn vị lưu trong cài đặt, thương hiệu giao diện vẫn là DinkLab.
+- Tên đơn vị lưu trong cài đặt, thương hiệu giao diện vẫn là DinkApp.
 - Báo cáo công nợ là số dư hiện tại lọc theo hạn, không phải snapshot lịch sử. Báo cáo lớp là học phí phân bổ theo buổi hoàn thành trừ chi phí trực tiếp; chưa có sổ kế toán hoặc lợi nhuận ròng.
 - Hoàn tiền nhiều nghĩa vụ dùng phân bổ tỷ lệ và chặn số tiền không chia chính xác tới đơn vị VND; bản vận hành thật cần giao diện phân bổ hoàn tiền chi tiết.
 

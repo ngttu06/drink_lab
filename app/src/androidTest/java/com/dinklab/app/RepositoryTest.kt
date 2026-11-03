@@ -58,6 +58,23 @@ class RepositoryTest {
         assertTrue(rejected)
     }
 
+    @Test fun brandingUpgradePreservesCustomNamesAndFinancialData() = runTest {
+        repository.initialize()
+        val before = repository.items.first()
+        val owner = before.first { it.id == "owner" }.copy(name = "DinkLab · Chủ doanh nghiệp")
+        val customVenue = before.first { it.id == "venue1" }.copy(name = "Sân riêng của tôi")
+        db.dao().put(listOf(StoredItem.from(owner), StoredItem.from(customVenue)))
+        // A missing preference simulates an installed version before the rebrand.
+        db.openHelper.writableDatabase.execSQL("DELETE FROM preferences WHERE `key` = 'branding-dinkapp'")
+        repository.setting("businessName", "DinkLab")
+        repository.initialize()
+        val after = repository.items.first()
+        assertEquals("DinkApp · Chủ doanh nghiệp", after.first { it.id == "owner" }.name)
+        assertEquals("Sân riêng của tôi", after.first { it.id == "venue1" }.name)
+        assertEquals("DinkApp", repository.setting("businessName"))
+        assertEquals(before.filter { it.kind == Kind.VOUCHER }, after.filter { it.kind == Kind.VOUCHER })
+    }
+
     @Test fun batchReschedulePreservesCompletedSessions() = runTest {
         repository.initialize()
         val before = repository.items.first()

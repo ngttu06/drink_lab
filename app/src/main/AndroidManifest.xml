@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="DinkLab" android:theme="@style/Theme.DinkLab" android:icon="@drawable/ic_dinklab"
+    <application android:label="DinkApp" android:theme="@style/Theme.DinkApp" android:icon="@drawable/ic_dinkapp"
         android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules" android:supportsRtl="true">
         <activity android:name=".MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize">
             <intent-filter>

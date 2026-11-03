@@ -1,4 +1,4 @@
-# Kết quả xác minh DinkLab Demo
+# Kết quả xác minh DinkApp Demo
 
 Ngày ghi nhận: **03/11/2026**.
 
@@ -80,7 +80,7 @@ Lần chạy đầu UI test timeout vì tài khoản cần tìm không xuất hi
 
 - APK: `/Users/ngttu/Workspace/drink_lab/app/build/outputs/apk/debug/app-debug.apk`.
 - Kích thước APK tại thời điểm kiểm tra: **17.140.096 byte**.
-- SHA-256 bản APK sau đổi tên: `e80b0fe39b61320f8094c83bc8bf66b19582ee3380041aba15453cc183863911`.
+- SHA-256 bản APK DinkApp hiện tại: `96d855642dd3fe3c86e17bdb909e0c9560e414c356faed2b85513809736e9cde`.
 - Unit test report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/tests/testDebugUnitTest/index.html`.
 - Instrumentation report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/androidTests/connected/debug/index.html`.
 - Lint report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/lint-results-debug.html`.
@@ -105,3 +105,15 @@ Lần chạy đầu UI test timeout vì tài khoản cần tìm không xuất hi
 - Chạy lại `:app:testDebugUnitTest :app:assembleDebug`: **BUILD SUCCESSFUL**, 46 tác vụ (5 thực thi, 41 up-to-date). Unit test được Gradle xác nhận up-to-date, không chạy lại instrumentation/lint trong lần đổi tên.
 - Kiểm tra APK bằng `aapt dump badging`: `application-label:'DinkLab'`.
 - Log: `/Users/ngttu/.dinklab-tools/rename-build.log`.
+
+## Đổi thương hiệu ứng dụng thành DinkApp
+
+- Project Gradle, launcher label, tiêu đề, màn hình đăng nhập, theme và tên tài nguyên icon dùng **DinkApp**.
+- Tên đơn vị mặc định, tài khoản chủ, cụm sân/sân mẫu và email Admin mẫu đã đổi theo thương hiệu mới.
+- Có cập nhật một lần cho dữ liệu thương hiệu cũ đã lưu; giữ nguyên tên tùy chỉnh và giao dịch. Các chuỗi thương hiệu cũ trong mã migration và test là có chủ đích.
+- Package/application ID `com.dinklab.app`, database `dinklab-demo.db`, repository `ngttu06/dinklab`, tài liệu yêu cầu gốc và các đường dẫn công cụ/workspace giữ nguyên để tương thích. Các phần trước của tài liệu này là lịch sử xác minh, không phải nhãn app hiện tại.
+- Build APK, APK test và chạy lại unit test: **BUILD SUCCESSFUL; 14/14 unit test đạt**.
+- Chạy trên Android 11/API 30: **8/8 instrumentation test đạt** (7 test repository, 1 test UI); bao gồm test nâng cấp thương hiệu giữ nguyên tên tùy chỉnh và dữ liệu tài chính.
+- `aapt dump badging` xác nhận `application-label:'DinkApp'`; APK vẫn có kích thước 17.140.096 byte.
+- Chưa chạy lại Lint cho lần đổi thương hiệu này; các kết quả Lint phía trên thuộc lần kiểm tra trước.
+- Log: `/Users/ngttu/.dinklab-tools/dinkapp-build.log` và `/Users/ngttu/.dinklab-tools/dinkapp-connected.log`.

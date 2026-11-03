@@ -14,7 +14,7 @@ class AppSmokeTest {
     @Test fun demoLoginShowsDashboardAndCustomerSearch() {
         compose.waitUntil(60000) { compose.onAllNodesWithText("Minh Anh · Admin").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("Minh Anh · Admin").performClick()
-        compose.waitUntil(10000) { compose.onAllNodesWithText("DinkLab", useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty() }
+        compose.waitUntil(10000) { compose.onAllNodesWithText("DinkApp", useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("Khách hàng").performClick()
         compose.onNodeWithText("Tìm khách hàng").performTextInput("Nguyễn Minh")
         compose.waitUntil(10000) { compose.onAllNodesWithText("Nguyễn Minh · 1").fetchSemanticsNodes().isNotEmpty() }

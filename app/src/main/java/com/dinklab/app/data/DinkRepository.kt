@@ -21,6 +21,29 @@ class DinkRepository(private val db: LocalDatabase) {
                 dao.put(DemoSeed.create().map(StoredItem::from))
                 dao.preference(Preference("initialized", "true"))
             }
+            if (dao.preference("branding-dinkapp") == null) {
+                // Update only known seeded branding; preserve custom names and all financial data.
+                val replacements = mapOf(
+                    "owner" to ("DinkLab · Chủ doanh nghiệp" to "DinkApp · Chủ doanh nghiệp"),
+                    "venue1" to ("DinkLab Thảo Điền" to "DinkApp Thảo Điền")
+                )
+                val branded = records().mapNotNull { record ->
+                    var updated = record
+                    replacements[record.id]?.let { (before, after) ->
+                        if (updated.name == before) updated = updated.copy(name = after)
+                    }
+                    if (record.id == "admin" && record["email"] == "admin@dinklab.example") {
+                        updated = updated.with("email" to "admin@dinkapp.example")
+                    }
+                    if (record.kind == Kind.COURT && record["venueId"] == "venue1" && record.name.endsWith(" · DinkLab Thảo Điền")) {
+                        updated = updated.copy(name = record.name.removeSuffix("DinkLab Thảo Điền") + "DinkApp Thảo Điền")
+                    }
+                    updated.takeIf { it != record }
+                }
+                dao.put(branded.map(StoredItem::from))
+                if (dao.preference("businessName") == "DinkLab") dao.preference(Preference("businessName", "DinkApp"))
+                dao.preference(Preference("branding-dinkapp", "true"))
+            }
         }
     }
 

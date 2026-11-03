@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.DinkLab" parent="android:style/Theme.Material.Light.NoActionBar">
+    <style name="Theme.DinkApp" parent="android:style/Theme.Material.Light.NoActionBar">
         <item name="android:fontFamily">sans</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">#F5F7F3</item>

@@ -21,8 +21,8 @@ fun SettingsScreen(vm: AppViewModel, user: Item, navigate: (Page) -> Unit) {
     val delay by vm.simulateDelay.collectAsStateWithLifecycle()
     val failure by vm.simulateFailure.collectAsStateWithLifecycle()
     var reset by remember { mutableStateOf<String?>(null) }
-    var businessName by rememberSaveable { mutableStateOf("DinkLab") }
-    LaunchedEffect(Unit) { businessName = vm.repository.setting("businessName") ?: "DinkLab" }
+    var businessName by rememberSaveable { mutableStateOf("DinkApp") }
+    LaunchedEffect(Unit) { businessName = vm.repository.setting("businessName") ?: "DinkApp" }
     LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
             SectionTitle("Tài khoản hiện tại")
