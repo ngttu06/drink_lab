@@ -1,5 +1,7 @@
 # DinkLab Android · Mock operations app
 
+Tên repository và project Gradle: `dinklab`. Tên hiển thị ứng dụng: **DinkLab**.
+
 Ứng dụng Android Kotlin/Jetpack Compose quản lý lớp pickleball với dữ liệu demo lưu bằng Room. Không có backend, không gọi ngân hàng, không xử lý thanh toán thật.
 
 ## Chạy dự án

@@ -80,7 +80,7 @@ Lần chạy đầu UI test timeout vì tài khoản cần tìm không xuất hi
 
 - APK: `/Users/ngttu/Workspace/drink_lab/app/build/outputs/apk/debug/app-debug.apk`.
 - Kích thước APK tại thời điểm kiểm tra: **17.140.096 byte**.
-- SHA-256: `2277b770fe1cb541265d26dbaf8373e7e51efa3d2ea1b9b98da3b696f82f6836`.
+- SHA-256 bản APK sau đổi tên: `e80b0fe39b61320f8094c83bc8bf66b19582ee3380041aba15453cc183863911`.
 - Unit test report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/tests/testDebugUnitTest/index.html`.
 - Instrumentation report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/androidTests/connected/debug/index.html`.
 - Lint report: `/Users/ngttu/Workspace/drink_lab/app/build/reports/lint-results-debug.html`.
@@ -96,3 +96,12 @@ Lần chạy đầu UI test timeout vì tài khoản cần tìm không xuất hi
 - Danh sách các giới hạn chức năng và hướng dẫn thử nằm trong `/Users/ngttu/Workspace/drink_lab/README.md`.
 
 **Kết luận:** bản demo đã build và chạy kiểm thử được; không coi kết quả này là xác nhận đầy đủ cho vận hành tài chính thật hoặc bảo mật production.
+
+## Xác minh sau đổi tên repository/project
+
+- Repository GitHub được đổi tên thành `ngttu06/dinklab`; giữ nguyên trạng thái public tại thời điểm đổi tên.
+- Project Gradle: `dinklab`; nhãn app: `DinkLab`; application ID giữ nguyên `com.dinklab.app` để không đổi định danh ứng dụng.
+- Thư mục workspace vẫn là `/Users/ngttu/Workspace/drink_lab`; các đường dẫn tài liệu tiếp tục trỏ đến vị trí thực tế.
+- Chạy lại `:app:testDebugUnitTest :app:assembleDebug`: **BUILD SUCCESSFUL**, 46 tác vụ (5 thực thi, 41 up-to-date). Unit test được Gradle xác nhận up-to-date, không chạy lại instrumentation/lint trong lần đổi tên.
+- Kiểm tra APK bằng `aapt dump badging`: `application-label:'DinkLab'`.
+- Log: `/Users/ngttu/.dinklab-tools/rename-build.log`.
